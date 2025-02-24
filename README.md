@@ -1,3 +1,48 @@
+### robosuite-joycon 
+Added joycon controller to control single and dual arm control demos, data set acquisition will be added in the future!
+
+### Quick Start
+
+```python
+
+# create conda env
+conda create -n robosuite python=3.10
+conda activate robosuite
+
+# install robosuite
+git clone https://github.com/box2ai-robotics/robosuite-joycon.git
+cd robosuite-joycon
+pip3 install -r requirements.txt
+pip3 install -r requirements-extra.txt
+
+# install joycon-robotics
+cd ..
+git clone https://github.com/box2ai-robotics/joycon-robotics.git
+cd joycon-robotics
+pip install -e .
+make install
+
+
+```
+
+```python
+cd ..
+cd robosuite-joycon
+
+# defualt for keboard control
+python robosuite/demos/demo_device_control.py 
+
+# Single joycon(R) controller
+python robosuite/demos/demo_device_control_joycon_single.py
+
+# Bimanual with two joycon controller
+python robosuite/demos/demo_device_control_joycon_bimanual.py
+```
+
+---
+
+---
+
 # robosuite
 
 ![gallery of_environments](docs/images/gallery.png)
