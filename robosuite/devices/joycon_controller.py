@@ -38,10 +38,11 @@ class JoyConController(Device):
                         offset_position_m=offset_position_m, 
                         offset_euler_rad=offset_euler_rad,
                         pitch_down_double=False,
-                        euler_reverse=[-1, -1, 1],
-                        direction_reverse = [1, -1, -1], # watch from the front
+                        euler_reverse=[-1, -1, 1], 
+                        direction_reverse = [-1, -1, 1], # watch from the front
                         pure_xz = False,
-                        gripper_state = 0,
+                        gripper_state = 1,
+                        rotation_filter_alpha_rate = 0.6
                     )
         # init
         self.init_pos = offset_position_m
@@ -49,6 +50,7 @@ class JoyConController(Device):
         r = R.from_euler('xyz', self.init_raw_rotation, degrees=True)
         self.init_rotation_matrix = r.as_matrix()
         
+        # 角度也是增量
         
         # current
         self.rotation = self.init_rotation_matrix
@@ -116,7 +118,9 @@ class JoyConController(Device):
         self.grasp_states_ = gripper_state
             
         # TODO button_control reset: self._reset_state = 1
+        
         if button_control == 8:
+            print(f'{button_control=}')
             self._reset_state = 1
             self._enabled = False
             self._reset_internal_state()
