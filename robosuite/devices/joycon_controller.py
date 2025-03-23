@@ -41,7 +41,7 @@ class JoyConController(Device):
                         euler_reverse=[-1, -1, 1], 
                         direction_reverse = [-1, -1, 1], # watch from the front
                         pure_xz = False,
-                        gripper_state = 1,
+                        gripper_state = 0,
                         rotation_filter_alpha_rate = 0.6
                     )
         # init
